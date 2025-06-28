@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ateliers Bénévoles d'Hygiène Numérique pour Seniors</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f7;
+            /* Fond légèrement bleuté */
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #007bff;
+            /* Bleu vif pour l'en-tête */
+            color: #fff;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-bg-shape {
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: rotate(20deg);
+            z-index: 1;
+        }
+
+        .header-bg-shape.right {
+            top: auto;
+            bottom: -50px;
+            left: auto;
+            right: -50px;
+            transform: rotate(-30deg);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .intro {
+            font-style: italic;
+            text-align: center;
+            margin: 25px 30px;
+            font-size: 1.2em;
+            color: #555;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 5px solid #007bff;
+        }
+
+        .content-section {
+            padding: 30px;
+        }
+
+        h2 {
+            color: #0056b3;
+            font-size: 1.8em;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .content-section h2:first-of-type {
+            margin-top: 0;
+        }
+
+        h2 i {
+            /* Style pour les icônes Font Awesome dans les titres H2 */
+            margin-right: 10px;
+            color: #007bff;
+        }
+
+        h3 {
+            color: #0056b3;
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul {
+            list-style-type: none;
+            /* Supprime les puces par défaut pour tous les ul */
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 0;
+            /* Pas de padding par défaut pour la puce */
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        ul li:before {
+            content: none;
+            /* Supprime toutes les puces par défaut */
+        }
+
+        /* Styles spécifiques pour les puces vertes dans "Objectifs des Ateliers" et "Format et Modalités Pratiques" */
+        .objectifs-list li:before,
+        .modalites-list li:before {
+            content: '✓';
+            /* Puce personnalisée (verte) */
+            color: #28a745;
+            /* Couleur verte */
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            padding-left: 0;
+            /* S'assure que la puce est bien à 0 */
+        }
+
+        .objectifs-list li,
+        .modalites-list li {
+            padding-left: 25px;
+            /* Ajoute l'espace pour la puce verte */
+        }
+
+
+        /* Styles pour les sous-listes (contenu des modules) */
+        .programme-list ul {
+            /* Cible les ul imbriqués dans .programme-list */
+            list-style-type: none;
+            padding-left: 25px;
+            /* Indentation pour les sous-listes */
+            margin-top: 5px;
+        }
+
+        .programme-list ul li {
+            padding-left: 25px;
+            /* Espace pour la puce bleue */
+        }
+
+        .programme-list ul li:before {
+            content: '•';
+            /* Puce bleue pour les sous-listes */
+            color: #007bff;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Nouvelle classe pour le soulignement élégant */
+        .highlight-underline {
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: underline;
+            text-decoration-color: rgba(0, 123, 255, 0.5);
+            /* Couleur du soulignement */
+            text-underline-offset: 4px;
+            /* Décalage du soulignement */
+            text-decoration-thickness: 2px;
+            /* Épaisseur du soulignement */
+        }
+
+        /* Style pour les points de validation - plus audacieux et SANS PUCE */
+        .validation-point {
+            font-style: italic;
+            color: #555;
+            /* Couleur plus visible */
+            margin-top: 10px;
+            /* Augmente l'espacement */
+            padding: 10px 15px;
+            /* Augmente le padding */
+            border-left: 5px solid #a0a0a0;
+            /* Barre latérale plus épaisse et plus foncée */
+            background-color: #f0f0f0;
+            /* Fond légèrement grisé */
+            border-radius: 5px;
+            /* Bords légèrement arrondis */
+            font-size: 0.98em;
+            display: block;
+            /* S'assure que le bloc prend toute la largeur */
+            margin-left: 0;
+            /* S'assure que la barre est alignée */
+            position: relative;
+        }
+
+        .validation-point:before {
+            /* S'assure qu'aucune puce n'apparaît devant la validation */
+            content: none !important;
+        }
+
+        /* Style pour les éléments clés des modalités pratiques */
+        .modalites-key {
+            font-weight: bold;
+            color: #0056b3;
+            /* Bleu foncé */
+        }
+
+        .contact {
+            background-color: #e9f7ff;
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+            border: 1px solid #cceeff;
+            font-size: 1.1em;
+        }
+
+        .contact h2 {
+            margin-top: 0;
+            padding-top: 5px;
+            border-bottom: none;
+            margin-bottom: 15px;
+        }
+
+        .contact strong {
+            color: #0056b3;
+        }
+
+        /* Nouveau style pour la présentation personnelle */
+        .personal-intro {
+            text-align: center;
+            margin: 20px 30px 30px 30px;
+            /* Ajuste les marges pour un bon espacement */
+            font-size: 1.1em;
+            color: #666;
+            padding: 15px;
+            background-color: #f0f7ff;
+            /* Fond légèrement bleuté */
+            border-radius: 8px;
+            border: 1px dashed #a0d9ff;
+            /* Bordure discrète */
+        }
+
+        /* Style spécifique pour le nom dans la section contact */
+        .contact .name {
+            font-size: 1.5em;
+            /* Rendu encore plus grand */
+            font-weight: 700;
+            /* Assure que le texte reste en gras */
+            color: #0056b3;
+            /* Garde la couleur bleue foncée */
+            display: block;
+            /* Pour que margin-bottom fonctionne */
+            margin-bottom: 10px;
+            /* Ajoute de l'espace en dessous */
+        }
+
+        .contact i {
+            /* Style pour les icônes Font Awesome dans la section contact */
+            margin-right: 8px;
+            color: #007bff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9em;
+            background-color: #f0f4f8;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="header-bg-shape"></div>
+            <div class="header-bg-shape right"></div>
+            <h1>ATELIERS BÉNÉVOLES D'HYGIÈNE NUMÉRIQUE POUR SENIORS</h1>
+        </header>
+
+        <p class="intro">
+            Bénévole engagé, je propose une série d'ateliers pratiques conçus pour donner aux seniors des <span
+                class="highlight-underline">compétences numériques concrètes et essentielles</span> pour leur sécurité
+            et leur autonomie en ligne. Chaque atelier visera l'acquisition de savoir-faire spécifiques, avec à la clé
+            la possibilité d'obtenir un <span class="highlight-underline">"Certificat du Numérique Sécurisé"</span> pour
+            valoriser leur engagement.
+        </p>
+
+        <p class="personal-intro">
+            En tant qu'ancien <span class="highlight-underline">scout</span> et <span
+                class="highlight-underline">ingénieur en électronique embarquée</span>, j'ai à cœur de partager mes
+            compétences pour rendre le numérique plus accessible et sécurisé pour tous.
+        </p>
+
+        <div class="content-section">
+            <h2><i class="fas fa-handshake"></i> Pourquoi cette initiative ?</h2>
+            <p>
+                Face à la digitalisation croissante de nos démarches quotidiennes et l'augmentation des cybermenaces,
+                nos seniors sont de plus en plus exposés. Il est crucial de les accompagner pour qu'ils naviguent en
+                toute confiance et sérénité. Mon engagement bénévole vise à <span class="highlight-underline">réduire
+                    cette fracture numérique et à renforcer leur autonomie</span> face aux outils digitaux.
+            </p>
+
+            <h2><i class="fas fa-users"></i> Public Cible</h2>
+            <p>
+                Ces ateliers s'adressent aux <span class="highlight-underline">personnes âgées / seniors</span>,
+                motivées par l'apprentissage de compétences numériques avancées pour sécuriser leur présence en ligne et
+                profiter pleinement des outils digitaux. Une familiarité minimale avec l'ordinateur ou la tablette est
+                un plus.
+            </p>
+
+            <h2><i class="fas fa-bullseye"></i> Objectifs des Ateliers</h2>
+            <ul class="objectifs-list">
+                <li><span class="highlight-underline">Acquérir des compétences numériques</span> spécifiques et
+                    directement utiles.</li>
+                <li><span class="highlight-underline">Mettre en place des mesures de sécurité</span> avancées pour leurs
+                    comptes en ligne.</li>
+                <li><span class="highlight-underline">Utiliser l'Intelligence Artificielle (IA)</span> comme outil
+                    d'information et d'assistance.</li>
+                <li><span class="highlight-underline">Obtenir une reconnaissance officielle</span> de leurs acquis
+                    numériques.</li>
+            </ul>
+
+            <h2><i class="fas fa-chalkboard-user"></i> Programme des Ateliers (Exemples de Modules)</h2>
+            <p>Chaque module pourrait faire l'objet d'un atelier d'environ 1h à 2h, avec des exercices pratiques.</p>
+            <ul class="programme-list">
+                <li>
+                    <h3><i class="fas fa-id-card"></i> Module 1 : Maîtriser son Identité Numérique</h3>
+                    <ul>
+                        <li>Créer et gérer un compte Google (ou équivalent : Apple ID, Microsoft Account) : utilité,
+                            paramétrage de base, sécurité.</li>
+                        <li>Comprendre les informations personnelles liées au compte et comment les contrôler.</li>
+                        <li class="validation-point">Validation : Création d'un compte Google fonctionnel et paramétrage
+                            des informations de base.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3><i class="fas fa-key"></i> Module 2 : Le Bouclier des Mots de Passe</h3>
+                    <ul>
+                        <li>L'importance des mots de passe forts et uniques.</li>
+                        <li>Introduction aux gestionnaires de mots de passe (ex: LastPass, Dashlane, KeePass) : pourquoi
+                            et comment les utiliser.</li>
+                        <li>Générer et sauvegarder des mots de passe aléatoires en toute sécurité.</li>
+                        <li class="validation-point">Validation : Utilisation d'un gestionnaire de mots de passe pour
+                            créer et stocker au moins trois mots de passe générés aléatoirement.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3><i class="fas fa-shield-alt"></i> Module 3 : L'Authentification Simplifiée et Ultra-Sécurisée
+                    </h3>
+                    <ul>
+                        <li>Comprendre et activer les clés d'accès (Passkeys) : la fin des mots de passe ?</li>
+                        <li>Mise en pratique sur des services compatibles (ex: Google, Apple).</li>
+                        <li>L'authentification à deux facteurs (2FA) : pourquoi et comment l'activer pour ses comptes
+                            importants.</li>
+                        <li class="validation-point">Validation : Configuration réussie d'une clé d'accès ou de
+                            l'authentification à deux facteurs sur un compte existant.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3><i class="fas fa-robot"></i> Module 4 : L'Intelligence Artificielle au Quotidien (Introduction)
+                    </h3>
+                    <ul>
+                        <li>Qu'est-ce que l'IA (IA Générative) ? À quoi ça sert ? (Ex: Gemini, ChatGPT).</li>
+                        <li>Comment l'utiliser pour s'informer, poser des questions, trouver des recettes, ou écrire un
+                            petit texte.</li>
+                        <li>Les limites et précautions d'usage (vérification des informations, confidentialité).</li>
+                        <li class="validation-point">Validation : Poser au moins trois questions pertinentes à une IA et
+                            comprendre les réponses.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h2><i class="fas fa-certificate"></i> Le Certificat du Numérique Sécurisé</h2>
+            <p>
+                À la fin de la série d'ateliers et après validation des compétences acquises pour chaque module, un
+                <span class="highlight-underline">"Certificat du Numérique Sécurisé"</span> sera délivré aux
+                participants. Ce document symbolique valorisera leur démarche et leurs nouvelles compétences.
+            </p>
+
+            <h2><i class="fas fa-cogs"></i> Format et Modalités Pratiques</h2>
+            <ul class="modalites-list">
+                <li><span class="modalites-key">Durée d'un module/atelier :</span> 1h à 2h par session, avec temps
+                    d'échange et pratique.</li>
+                <li><span class="modalites-key">Nombre de participants :</span> Idéalement 1 à 10 personnes par groupe
+                    pour un suivi personnalisé.</li>
+                <li><span class="modalites-key">Matériel nécessaire :</span> Une salle avec un projecteur. Pour ces
+                    ateliers ciblés, la <span class="highlight-underline">mise à disposition d'ordinateurs ou de
+                        tablettes connectés à Internet</span> (ou la possibilité pour les participants d'apporter les
+                    leurs) est fortement recommandée pour les exercices pratiques.</li>
+                <li><span class="modalites-key">Coût :</span> Ces ateliers sont <span
+                        class="highlight-underline">entièrement bénévoles et gratuits</span>.</li>
+                <li><span class="modalites-key">Engagement :</span> Il est souhaitable que les participants s'engagent
+                    sur la durée du cycle pour maximiser les apprentissages.</li>
+            </ul>
+
+            <div class="contact">
+                <h2><i class="fas fa-address-book"></i> CONTACT</h2>
+                <p>
+                    <strong class="name">Leo Dorier</strong><br>
+                    <strong>E-mail :</strong> <i class="fas fa-envelope"></i> leo.dorier.pro@gmail.com<br>
+                    <strong>LinkedIn :</strong> <i class="fa-brands fa-linkedin"></i> www.linkedin.com/in/leo-dorier
+                </p>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 - Création et contenu protégés par le droit d'auteur.</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>
